@@ -15,7 +15,7 @@ class Zendvn_Sp_Backend{
 	
 	public function menus(){
 		add_menu_page('ZShopping', 'ZShopping', 'manage_options', $this->_menuSlug,
-						array($this,'dispatch_function'),'',3);
+						array($this,'dispatch_function'),'',4);
 
 		add_submenu_page($this->_menuSlug, 'Categories', 'Categories', 'manage_options', 
 						$this->_menuSlug . '-categories',array($this,'dispatch_function'));						
@@ -40,12 +40,13 @@ class Zendvn_Sp_Backend{
 		$page = $this->_page;
 		
 		if($page == 'zendvn-sp-manager'){			
-			$obj = $zController->getController('AdminShopping','/backend');		
+			$obj = $zController->getController('AdminShopping','/backend');	
 			$obj->display();
 		}
 		
 		if($page == 'zendvn-sp-manager-categories'){
 			$obj = $zController->getController('AdminCategory','/backend');
+			print_r($obj);die;	
 			$obj->display();
 		}
 		

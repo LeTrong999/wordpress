@@ -1,24 +1,29 @@
 <?php
 class zController{
-	public function __construct($option = array()){
-
+	
+	public function __construct($options = array()){
+		
 	}
+	
 	public function getController($filename = '', $dir = ''){
+		
 		$obj = new stdClass();
-		$file = LKT_CONTROLLER_PATH . $dir . DS . $filename . '.php';
+		
+		$file =  ZENDVN_SP_CONTROLLER_PATH . $dir . DS . $filename . '.php';
+		
 		if(file_exists($file)){
 			require_once $file;
-			$controllerName = LKT_PREFIX . $filename . '_Controller';
+			$controllerName = ZENDVN_SP_PREFIX . $filename . '_Controller';
 			$obj = new $controllerName ();
 		}
 		return $obj;
 	}
-
+	
 	public function getModel($filename = '', $dir = ''){
 
 		$obj = new stdClass();
 		
-		$file =  LKT_MODELS_PATH . $dir . DS . $filename . '.php';
+		$file =  ZENDVN_SP_MODELS_PATH . $dir . DS . $filename . '.php';
 		
 		if(file_exists($file)){
 			require_once $file;
@@ -32,34 +37,34 @@ class zController{
 
 		$obj = new stdClass();
 		
-		$file =  LKT_HELPER_PATH . $dir . DS . $filename . '.php';
+		$file =  ZENDVN_SP_HELPER_PATH . $dir . DS . $filename . '.php';
 		
 		if(file_exists($file)){
 			require_once $file;
-			$helperName = LKT_PREFIX . $filename . '_Helper';
+			$helperName = ZENDVN_SP_PREFIX . $filename . '_Helper';
 			$obj = new $helperName ();
 		}
 		return $obj;
 	}
-
+	
 	public function getView($filename = '', $dir = ''){
 		
-		$file =  LKT_TEMPLATE_PATH . $dir . DS . $filename;
+		$file =  ZENDVN_SP_TEMPLATE_PATH . $dir . DS . $filename;
 		
 		if(file_exists($file)){
 			require_once $file;		
 		}
 	}
-
+	
 	public function getValidate($filename = '', $dir = ''){
 
 		$obj = new stdClass();
 		
-		$file =  LKT_VALIDATE_PATH . $dir . DS . $filename . '.php';
+		$file =  ZENDVN_SP_VALIDATE_PATH . $dir . DS . $filename . '.php';
 		
 		if(file_exists($file)){
 			require_once $file;
-			$validateName = LKT_PREFIX . $filename . '_Validate';
+			$validateName = ZENDVN_SP_PREFIX . $filename . '_Validate';
 			$obj = new $validateName ();
 		}
 		return $obj;
@@ -67,7 +72,7 @@ class zController{
 	
 	public function getCssUrl($filename = '', $dir = ''){
 		
-		$url = LKT_CSS_URL . $dir . '/' . $filename;
+		$url = ZENDVN_SP_CSS_URL . $dir . '/' . $filename;
 		
 		$headers = @get_headers($url);
 		$flag = stripos($headers[0], "200 OK")?true:false;
@@ -81,7 +86,7 @@ class zController{
 	
 	public function getImageUrl($filename = '', $dir = ''){
 
-		$url = LKT_IMAGES_URL . $dir . '/' . $filename;
+		$url = ZENDVN_SP_IMAGES_URL . $dir . '/' . $filename;
 		
 		$headers = @get_headers($url);
 		$flag = stripos($headers[0], "200 OK")?true:false;
@@ -95,7 +100,7 @@ class zController{
 	
 	public function getJsUrl($filename = '', $dir = ''){
 
-		$url = LKT_JS_URL . $dir . '/' . $filename;
+		$url = ZENDVN_SP_JS_URL . $dir . '/' . $filename;
 		
 		$headers = @get_headers($url);
 		$flag = stripos($headers[0], "200 OK")?true:false;

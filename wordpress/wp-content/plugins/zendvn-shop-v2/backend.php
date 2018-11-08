@@ -1,7 +1,7 @@
 <?php
-class LKT_Backend{
+class Zendvn_Sp_Backend{
 	
-	private $_menuSlug = 'lkt-manager';
+	private $_menuSlug = 'zendvn-sp-manager';
 	
 	private $_page = '';
 	
@@ -14,11 +14,12 @@ class LKT_Backend{
 	}
 	
 	public function menus(){
-		add_menu_page('LKTShopping', 'LKTShopping', 'manage_options', $this->_menuSlug,
+		add_menu_page('ZShopping', 'ZShopping', 'manage_options', $this->_menuSlug,
 						array($this,'dispatch_function'),'',3);
-		add_submenu_page($this->_menuSlug, 'Dashboard', 'Dashboard', 'manage_options', 
+		//Dashboard
+		add_submenu_page($this->_menuSlug, 'Dashboard', 'Dashboard', 'manage_options',
 						$this->_menuSlug,array($this,'dispatch_function'));
-
+						
 		add_submenu_page($this->_menuSlug, 'Categories', 'Categories', 'manage_options', 
 						$this->_menuSlug . '-categories',array($this,'dispatch_function'));						
 
@@ -41,35 +42,35 @@ class LKT_Backend{
 		global $zController;
 		$page = $this->_page;
 		
-		// if($page == 'lkt-manager'){			
-		// 	$obj = $zController->getController('AdminShopping','/backend');		
-		// 	$obj->display();
-		// }
+		if($page == 'zendvn-sp-manager'){			
+			$obj = $zController->getController('AdminShopping','/backend');		
+			$obj->display();
+		}
 		
-		// if($page == 'lkt-manager-categories'){
-		// 	$obj = $zController->getController('AdminCategory','/backend');
-		// 	$obj->display();
-		// }
+		if($page == 'zendvn-sp-manager-categories'){
+			$obj = $zController->getController('AdminCategory','/backend');
+			$obj->display();
+		}
 		
-		// if($page == 'lkt-manager-products'){
-		// 	$obj = $zController->getController('AdminProduct','/backend');
-		// 	$obj->display();
-		// }
+		if($page == 'zendvn-sp-manager-products'){
+			$obj = $zController->getController('AdminProduct','/backend');
+			$obj->display();
+		}
 		
-		// if($page == 'lkt-manager-manufacturer'){
-		// 	$obj = $zController->getController('AdminManufacturer','/backend');
-		// 	$obj->display();
-		// }
+		if($page == 'zendvn-sp-manager-manufacturer'){
+			$obj = $zController->getController('AdminManufacturer','/backend');
+			$obj->display();
+		}
 		
-		if($page == 'lkt-manager-invoices'){
+		if($page == 'zendvn-sp-manager-invoices'){
 			$obj = $zController->getController('AdminInvoices','/backend');
-			//$obj->display();
+			$obj->display();
 		}		
 
-		// if($page == 'lkt-manager-settings'){
-		// 	$obj = $zController->getController('AdminSetting','/backend');
-		// 	$obj->display();
-		// }
+		if($page == 'zendvn-sp-manager-settings'){
+			$obj = $zController->getController('AdminSetting','/backend');
+			$obj->display();
+		}
 	}
 }
 
